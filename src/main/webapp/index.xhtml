@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title> A simple Currency Converter</title>
+    </h:head>
+    <h:body>
+        <h2>The rate is:</h2>
+        <p>
+            <h:outputLabel for="currRate" rendered="#{currencyManager.currentRate != null}"  value="Current rate: "/>
+            <h:outputText id="currRate" value="#{currencyManager.currentRate.rate}"/>
+        </p>
+        <h2>Get the current rate for a certain currency</h2>
+        <p>
+            <h:outputLabel for="currencyIsoCode" value="The currency for which rate you want: "/>
+            <h:inputText id="currencyIsoCode" value="#{currencyManager.searchedCurrency}"/>
+        </p>
+        <p>
+            <h:commandButton value="getRate" action="#{currencyManager.getRate}"/>
+        </p>
+    </h:body>
+</html>
