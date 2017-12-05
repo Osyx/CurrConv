@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="CurrConv:EJB exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/CurrConv_EJB_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="CurrConv/ejb/EJB" />
+      <element id="module-output" name="CurrConv" />
+    </root>
+  </artifact>
+</component>
