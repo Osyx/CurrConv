@@ -1,6 +1,7 @@
 package main.java.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @NamedQueries({
         @NamedQuery(
@@ -10,7 +11,7 @@ import javax.persistence.*;
 })
 
 @Entity(name = "currencies")
-public class Currency implements CurrencyDTO{
+public class Currency implements CurrencyDTO, Serializable {
     @Id
     @Column(name = "isocode", nullable = false)
     private String isocode;
