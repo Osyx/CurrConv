@@ -1,4 +1,9 @@
 package main.java.model;
 
-public class CurrencyDTO {
+public interface CurrencyDTO {
+    String getIsocode();
+
+    float getRate();
+
+    int getVersionNum();
 }
