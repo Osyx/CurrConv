@@ -921,7 +921,13 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="231" parent="228" name="PRIMARY">
+    <column id="231" parent="228" name="version">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="232" parent="228" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>isocode</ColNames>
       <Primary>1</Primary>
