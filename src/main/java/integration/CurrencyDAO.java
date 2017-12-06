@@ -1,8 +1,8 @@
-package main.java.integration;
+package integration;
 
-import main.java.model.Currency;
-import main.java.model.CurrencyDTO;
-import main.java.model.CurrencyError;
+import model.Currency;
+import model.CurrencyDTO;
+import model.CurrencyError;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -20,5 +20,9 @@ public class CurrencyDAO {
         if(currency == null)
             throw new CurrencyError("No currency named " + isoCode + " exists, maybe you typed the wrong ISO code? It's three letters long.");
         return  currency;
+    }
+
+    public void insertIntoDB(String isocode, float rate) {
+        entityManager.persist(new Currency(isocode, rate));
     }
 }
