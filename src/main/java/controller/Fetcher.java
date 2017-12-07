@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import java.io.Serializable;
+import java.util.List;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @Stateless
@@ -16,11 +17,7 @@ public class Fetcher implements Serializable {
     @EJB
     private CurrencyDAO currencyDB = new CurrencyDAO();
 
-    public CurrencyDTO checkRate(String isoCode) throws CurrencyError {
-        return currencyDB.getCurrency(isoCode);
-    }
-
-    public void insertIntoDB(String isocode, float rate) {
-        currencyDB.insertIntoDB(isocode, rate);
+    public List<CurrencyDTO> checkNewRate(String toIsoCode, String fromIsoCode) throws CurrencyError {
+        return currencyDB.getNewCurrency(toIsoCode, fromIsoCode);
     }
 }

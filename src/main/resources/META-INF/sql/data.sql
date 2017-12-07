@@ -8,3 +8,4 @@ INSERT INTO Currencies (isocode,rate,version) VALUES ('TRY',4.5823,1);
 INSERT INTO Currencies (isocode,rate,version) VALUES ('GBP',0.88183,1);
 INSERT INTO Currencies (isocode,rate,version) VALUES ('CAD',1.4966,1);
 INSERT INTO Currencies (isocode,rate,version) VALUES ('NZD',1.7193,1);
+INSERT INTO Currencies (isocode,rate,version) VALUES ('EUR',1.0, 1);
