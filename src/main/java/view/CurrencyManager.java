@@ -29,6 +29,7 @@ public class CurrencyManager implements Serializable{
     @Inject
     private Conversation conversation;
 
+    /*
     public void updateDB() {
         try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -48,7 +49,7 @@ public class CurrencyManager implements Serializable{
             e.printStackTrace();
         }
     }
-
+    */
     private void startConversation() {
         if (conversation.isTransient()) {
             conversation.begin();
