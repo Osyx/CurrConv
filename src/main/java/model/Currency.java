@@ -1,4 +1,6 @@
-package main.java.model;
+package model;
+
+import model.CurrencyDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,6 +26,11 @@ public class Currency implements CurrencyDTO, Serializable {
     private int versionNum;
 
     public Currency() {}
+
+    public Currency(String isocode, float rate) {
+        this.isocode = isocode;
+        this.rate = rate;
+    }
 
     public String getIsocode() {
         return isocode;

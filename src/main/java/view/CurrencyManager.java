@@ -1,8 +1,8 @@
-package main.java.view;
+package view;
 
-import main.java.controller.Fetcher;
-import main.java.model.CurrencyDTO;
-import main.java.model.CurrencyError;
+import controller.Fetcher;
+import model.CurrencyDTO;
+import model.CurrencyError;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
@@ -10,14 +10,17 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 @Named("currencyManager")
 @ConversationScoped
 public class CurrencyManager implements Serializable{
     @EJB
     private Fetcher fetcher = new Fetcher();
-    private String searchedCurrency;
-    private CurrencyDTO currentRate;
+    private float amount = 0;
+    private float desiredValue;
+    private String toCurrency;
+    private String fromCurrency;
     private Exception failure;
     @Inject
     private Conversation conversation;
@@ -40,26 +43,47 @@ public class CurrencyManager implements Serializable{
         failure = e;
     }
 
-    public void getRate() {
+    public void fetchRate() {
         try {
             startConversation();
             failure = null;
-            currentRate = fetcher.checkRate(searchedCurrency);
+            List<CurrencyDTO> list = fetcher.checkNewRate(fromCurrency, toCurrency);
+            desiredValue = amount / list.get(0).getRate() * list.get(1).getRate();
         } catch (CurrencyError currencyError) {
             handleException(currencyError);
         }
     }
 
-    public void setSearchedCurrency(String searchedCurrency) {
-        this.searchedCurrency = searchedCurrency;
+    public void setToCurrency(String toCurrency) {
+        this.toCurrency = toCurrency;
     }
 
-    public String getSearchedCurrency() {
-        return searchedCurrency;
+    public void setFromCurrency(String fromCurrency) {
+        this.fromCurrency = fromCurrency;
     }
 
-    public CurrencyDTO getCurrentRate() {
-        return currentRate;
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
+
+    public String getToCurrency() {
+        return toCurrency;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public String getFromCurrency() {
+        return fromCurrency;
+    }
+
+    public float getDesiredValue() {
+        return desiredValue;
+    }
+
+    public void setDesiredValue(float desiredValue) {
+        this.desiredValue = desiredValue;
     }
 
     public boolean success() {

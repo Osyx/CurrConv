@@ -1,23 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title> A simple Currency Converter</title>
     </h:head>
     <h:body>
         <h2>The rate is:</h2>
-        <p>
-            <h:outputLabel for="currRate" rendered="#{currencyManager.currentRate != null}"  value="Current rate: "/>
-            <h:outputText id="currRate" value="#{currencyManager.currentRate.rate}"/>
-        </p>
-        <h2>Get the current rate for a certain currency</h2>
-        <p>
-            <h:outputLabel for="currencyIsoCode" value="The currency for which rate you want: "/>
-            <h:inputText id="currencyIsoCode" value="#{currencyManager.searchedCurrency}"/>
-        </p>
-        <p>
-            <h:commandButton value="getRate" action="#{currencyManager.getRate}"/>
-        </p>
+        <h:form>
+            <p>
+                <h:outputLabel for="converted" rendered="#{currencyManager.desiredValue != null}"  value="Current rate: "/>
+                <h:outputText id="converted" value="#{currencyManager.desiredValue}"/>
+            </p>
+            <h2>To</h2>
+            <p>
+                <h:outputLabel for="toIsoCode" value="Amount: "/>
+                <h:inputText id="amount" value="#{currencyManager.amount}"/>
+                <h:outputLabel for="toIsoCode" value=" in "/>
+                <h:inputText id="toIsoCode" value="#{currencyManager.fromCurrency}"/>
+                <h:outputLabel for="fromIsoCode" value=" to "/>
+                <h:inputText id="fromIsoCode" value="#{currencyManager.toCurrency}"/>
+            </p>
+            <p>
+                <h:commandButton value="Get rate" action="#{currencyManager.fetchRate}"/>
+            </p>
+        </h:form>
     </h:body>
 </html>
