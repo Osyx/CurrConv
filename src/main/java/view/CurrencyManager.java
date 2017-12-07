@@ -1,8 +1,8 @@
-package main.java.view;
+package view;
 
-import main.java.controller.Fetcher;
-import main.java.model.CurrencyDTO;
-import main.java.model.CurrencyError;
+import controller.Fetcher;
+import model.CurrencyDTO;
+import model.CurrencyError;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;

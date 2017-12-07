@@ -1,8 +1,8 @@
-package main.java.controller;
+package controller;
 
-import main.java.integration.CurrencyDAO;
-import main.java.model.CurrencyDTO;
-import main.java.model.CurrencyError;
+import integration.CurrencyDAO;
+import model.CurrencyDTO;
+import model.CurrencyError;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
